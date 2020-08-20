@@ -2,6 +2,7 @@ from textblob import TextBlob
 import sys
 import re
 
+# Read and sort data from files into a list of dictionaries-- makes it easy to search
 def readData(fn, companyList):
 	with open(fn, 'r') as file:
 		for line in file:
@@ -14,52 +15,42 @@ def readData(fn, companyList):
 				addDict = {"name": name, "purpose": purpose}
 				companyList.append(addDict)
 
-def readSpecialData(fn, companyList):
-	with open(fn, 'r') as file:
-		content = file.read()
-		content_list = content.split("',")
-	for i in range(len(content_list)):
-		name = "n"
-		purpose = "p"
-		if (i % 5 == 1):
-			name = content_list[i].strip('"').strip()
-		elif (i % 5 == 3):
-			purpose = content_list[i]
-		addDict = {"name": name, "purpose": purpose}
-		companyList.append(addDict)
-	return companyList
-
-
-print(readSpecialData("myresults1.txt", []))
-
-
-
+# Iterate through the dictionary and find the polarity of the company description
 def getSentiment(companyList):
 	for c in companyList:
 		pol = TextBlob(c["purpose"]).sentiment.polarity
 		c["polarity"] = pol
+	# Sorts the dictionary by polarity key, from lowest to highest
 	sortedList = sorted(companyList, key = lambda i: i["polarity"])
 	return sortedList
 
-# if __name__ == "__main__":
-# 	companyList = []
-# 	readData("results.txt", companyList)
-# 	readData("mydata.csv", companyList)
-# 	sortedList = getSentiment(companyList)
-# 	b10 = sortedList[:10]
-# 	t10 = sortedList[-10:]
-# 	t10.reverse()
-# 	print("'Worst' 10 Companies:")
-# 	count = 1
-# 	for d in b10:
-# 		print(str(count) + ". " + d["name"] + " | Polarity: " + str(d["polarity"]))
-# 		count = count + 1
-# 	count = 1
-# 	print("-----------------------------")
-# 	print("'Best' 10 Companies:")
-# 	for d in t10:
-# 		print(str(count) + ". " + d["name"] + " | Polarity: " + str(d["polarity"]))
-# 		count = count + 1
+
+if __name__ == "__main__":
+	companyList = []
+	# Read both files
+	readData("results.txt", companyList)
+	readData("mydata.csv", companyList)
+	# Get sentiment
+	sortedList = getSentiment(companyList)
+	# 'Worst' 10 companies have lowest polarity
+	b10 = sortedList[:10]
+	# 'Best' 10 Companies have highest polarity
+	t10 = sortedList[-10:]
+	# Reverse top 10 so it counts down while printing (for readability)
+	t10.reverse()
+
+	# Printing and formatting output.
+	print("'Worst' 10 Companies:")
+	count = 1
+	for d in b10:
+		print(str(count) + ". " + d["name"] + " | Polarity: " + str(d["polarity"]))
+		count = count + 1
+	count = 1
+	print("-----------------------------")
+	print("'Best' 10 Companies:")
+	for d in t10:
+		print(str(count) + ". " + d["name"] + " | Polarity: " + str(d["polarity"]))
+		count = count + 1
 
 
 

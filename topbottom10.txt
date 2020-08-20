@@ -1,0 +1,23 @@
+'Worst' 10 Companies:
+1. Norton PLC | Polarity: -0.6
+2. Burton-Klein | Polarity: -0.6
+3. Montgomery, Boyd and Murphy | Polarity: -0.5
+4. Mcbride-Wilson | Polarity: -0.5
+5. Reeves-Ruiz | Polarity: -0.3
+6. Name | Polarity: 0.0
+7. Morton and Sons | Polarity: 0.0
+8. Paul, Adams and Carey | Polarity: 0.0
+9. Stanley, Dunn and Kim | Polarity: 0.0
+10. Hernandez, Webster and Haley | Polarity: 0.0
+-----------------------------
+'Best' 10 Companies:
+1. Arnold, Mills and Adams | Polarity: 0.5
+2. Kirby, Frederick and Hill | Polarity: 0.5
+3. Moore-Taylor | Polarity: 0.5
+4. Hamilton and Sons | Polarity: 0.5
+5. Freeman, Barker and Allen | Polarity: 0.375
+6. Lewis-Carey | Polarity: 0.3
+7. Martinez, Daugherty and Christian | Polarity: 0.3
+8. Ayala PLC | Polarity: 0.1
+9. White-Carlson | Polarity: 0.1
+10. Gomez, Conner and Wright | Polarity: 0.1
